@@ -1,4 +1,4 @@
-﻿namespace objetos
+﻿namespace estoque
 {
     internal class Conj
     {
@@ -8,5 +8,6 @@
         }
 
         public IList<Product> Items { get; set; }
+
     }
 }
