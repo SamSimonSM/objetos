@@ -4,10 +4,10 @@
     {
         public Conj()
         {
-            Items = new List<Product>(); ;
+            Items = new List<Produto>(); ;
         }
 
-        public IList<Product> Items { get; set; }
+        public IList<Produto> Items { get; set; }
 
     }
 }

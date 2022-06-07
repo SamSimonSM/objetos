@@ -4,21 +4,35 @@
     {
          public static void Menu(Conj conj)
         {
-            Console.Clear();
-            Console.Write("1-Cadastrar Produto" +
+            try
+            {
+                Console.Write("1-Cadastrar Produto" +
                 "\n2-Mostar Produto" +
                 "\n3-Alterar Produto" +
                 "\n4-Sair" +
                 "\nInforme a Operação: "
                 );
             var escolha = int.Parse(Console.ReadLine());
+            Console.Clear();
             switch (escolha)
             {
                 case 1: CadastraProduto(conj); break;
                 case 2: MostraProduto(conj); break;
                 case 3: AlteraProduto(conj); break;
                 case 4: System.Environment.Exit(0); break;
+                    default: Console.WriteLine("*****Insira um numero valido****\n");
+                        Menu(conj); break;
             }
+            }
+            catch (Exception)
+            {
+                Console.Clear();
+                Console.WriteLine("*****Insira um Valor valido****");
+                Menu(conj);
+                throw;
+            }
+            
+            
         }
 
 
@@ -38,7 +52,7 @@
             Console.Write("Insira a disponibilidade: ");
             eEstoque = (EEstoque)Enum.Parse(typeof(EEstoque), Console.ReadLine());
 
-            Product item = new(nome, valor, eEstoque, quant);
+            Produto item = new(nome, valor, eEstoque, quant);
 
             Console.Clear();
             Console.WriteLine("Produto Cadastrado");
@@ -133,7 +147,7 @@
         //    $"\nValor em real:{item.PrecoEmReal(4.79)}" +
         //    $"\nStatus:{item.Estoque}");
         //}
-        static public void MostraProduto(Product item, int cont)
+        static public void MostraProduto(Produto item, int cont)
         {
             Console.WriteLine($"Produto Numero:{cont}");
             Console.WriteLine(item.ToString());

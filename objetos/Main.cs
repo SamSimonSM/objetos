@@ -13,7 +13,7 @@
 
             while (seguir == 1)
             {
-                Metodos.Menu(conj);
+                Metodos.Menu(conj); 
 
             }
 

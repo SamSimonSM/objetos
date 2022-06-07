@@ -9,10 +9,10 @@ namespace estoque
         Transito = 2,
         Descontinuado = 3
     }
-    public class Product
+    public class Produto
     {
 
-        public Product(string name, double preco, EEstoque estoque, int quant)
+        public Produto(string name, double preco, EEstoque estoque, int quant)
         {
             _id = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 8);
             _nome = name;
@@ -25,6 +25,7 @@ namespace estoque
         private double _preco;
         private int _quant;
         private EEstoque _estoque;
+
         private double PrecoEmReal(double dolar)
         {
             return _preco * dolar;
