@@ -1,8 +1,8 @@
-﻿namespace Programa
+﻿namespace controleEstoque.Entities
 {
-    internal class Estoque
+    internal class Estoques
     {
-        public Estoque()
+        public Estoques()
         {
             Items = new List<Produto>();
         }
@@ -11,9 +11,9 @@
 
         public static void CadastraProduto()
         {
-            
-            Items.Add(Produto.CadastraProduto());
-        }  
+
+            Items.Add(Produto.CriaProduto());
+        }
         public static void MostraEstoque()
         {
             Console.Clear();
@@ -26,7 +26,7 @@
             Console.WriteLine("Pressione enter para continuar !");
             Console.ReadLine();
             Console.Clear();
-        } 
+        }
         public static void AlteraProduto()
         {
             Console.Clear();
@@ -95,7 +95,7 @@
             Console.Clear();
             Items.Remove(Items[altProduto]);
 
-        }    
+        }
         public static void MostraProduto(Produto item, int cont)
         {
             Console.WriteLine($"Produto Numero:{cont}");
@@ -112,6 +112,6 @@
             $"\nValor em real:{Items[altProduto].PrecoReal}" +
             $"\nStatus:{Items[altProduto].Estoque}");
         }
-        
+
     }
 }

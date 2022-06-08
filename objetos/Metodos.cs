@@ -1,4 +1,6 @@
-﻿namespace Programa
+﻿using controleEstoque.Entities;
+
+namespace Programa
 {
 
 
@@ -20,10 +22,10 @@
                 Console.Clear();
                 switch (escolha)
                 {
-                    case 1: Estoque.CadastraProduto(); break;
-                    case 2: Estoque.MostraEstoque(); break;
-                    case 3: Estoque.AlteraProduto(); break;
-                    case 4: Estoque.RemoveProduto(); break;
+                    case 1: Estoques.CadastraProduto(); break;
+                    case 2: Estoques.MostraEstoque(); break;
+                    case 3: Estoques.AlteraProduto(); break;
+                    case 4: Estoques.RemoveProduto(); break;
                     case 5: Environment.Exit(0); break;
                     default:
                         Console.WriteLine("*****Insira um Numero Valido****");

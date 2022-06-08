@@ -1,13 +1,13 @@
-﻿namespace Programa
+﻿using controleEstoque.Entities;
+
+namespace Programa
 {
-
-
-    internal class NewBaseType
+    internal class Principal
     {
         static void Main(string[] args)
         {
 
-            var conj = new Estoque();
+            var conj = new Estoques();
 
             var seguir = 1;
 
