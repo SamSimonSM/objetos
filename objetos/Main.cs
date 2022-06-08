@@ -1,4 +1,4 @@
-﻿namespace estoque
+﻿namespace Programa
 {
 
 
@@ -7,18 +7,17 @@
         static void Main(string[] args)
         {
 
-            var conj = new Conj();
+            var conj = new Estoque();
 
             var seguir = 1;
 
             while (seguir == 1)
             {
-                Metodos.Menu(conj); 
+                Metodos.Menu();
 
             }
 
         }
-
 
     }
 }

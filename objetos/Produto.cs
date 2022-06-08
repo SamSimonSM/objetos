@@ -1,18 +1,27 @@
 ﻿
 
-namespace estoque
+namespace Programa
 {
-    public enum EEstoque
+   internal enum EEstoque
     {
         Indisponivel = 0,
         Disponivel = 1,
         Transito = 2,
         Descontinuado = 3
     }
-    public class Produto
+    internal  class Produto
     {
-
-        public Produto(string name, double preco, EEstoque estoque, int quant)
+        private string _id;
+        private string _nome;
+        private double _preco;
+        private int _quant;
+        private EEstoque _estoque;
+        private double PrecoEmReal(double dolar)
+        {
+            return _preco * dolar;
+        }
+     
+        private Produto(string name, double preco, EEstoque estoque, int quant)
         {
             _id = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 8);
             _nome = name;
@@ -20,54 +29,51 @@ namespace estoque
             _estoque = estoque;
             _quant = quant;
         }
-        private string _id;
-        private string _nome;
-        private double _preco;
-        private int _quant;
-        private EEstoque _estoque;
-
-        private double PrecoEmReal(double dolar)
+     
+        public string Id => _id;
+        public string Nome { get => _nome; set => _nome = value; }
+        public double Preco { get => _preco; set => _preco = value; }
+        public int Quant { get => _quant; set => _quant = value; }
+        public EEstoque Estoque { get => _estoque; set => _estoque = value; }
+        public double PrecoReal => PrecoEmReal(4.79);
+        public static Produto CadastraProduto()
         {
-            return _preco * dolar;
+            Console.Clear();
+            Console.Write("Insira o nome do produto: ");
+            var nome = Console.ReadLine();
+            Console.Write("Insira a quantidade do produto: ");
+            var quant = int.Parse(Console.ReadLine());
+            Console.Write("Insira o valor do produto: ");
+            var valor = double.Parse(Console.ReadLine());
+            Console.Write("Insira a disponibilidade: ");
+            var eEstoque = (EEstoque)Enum.Parse(typeof(EEstoque), Console.ReadLine());
+
+            Produto item = new(nome, valor, eEstoque, quant);
+
+            Console.Clear();
+            Console.WriteLine("Produto Cadastrado");
+            Console.WriteLine(item);
+            Console.WriteLine("Pressione enter para continuar !");
+            Console.ReadLine();
+            Console.Clear();
+            return item;
         }
-
-        public string GetId()
-        {
-            return _id;
-        }
-        public string GetNome() => _nome;
-        public double GetPreco() => _preco;
-        public int GetQuant() => _quant;
-        public EEstoque GetEstoque() => _estoque;
-        public double GetPrecoReal()
-        {
-            return PrecoEmReal(4.79);
-        }
-
-        public void SetNome(string nome) => _nome = nome;
-        public void SetPreco(double preco) => _preco = preco;
-        public void SetQuant(int quant) => _quant = quant;
-        public void SetEstoque(EEstoque estoque) => _estoque = estoque;
-
-
-
-
-
-
-
-
         public override string ToString()
         {
             return
             "--------------------" +
-            $"\nCodigo:{_id}" +
-            $"\nNome:{_nome}" +
-            $"\nQuantidade:{_quant}" +
-            $"\nValor em Dolar:{_preco}" +
-            $"\nValor em real:{PrecoEmReal(4.79)}" +
-            $"\nStatus:{_estoque}\n";
+            $"\nCodigo:{Id}" +
+            $"\nNome:{Nome}" +
+            $"\nQuantidade:{Quant}" +
+            $"\nValor em Dolar:{Preco}" +
+            $"\nValor em real:{PrecoReal}" +
+            $"\nStatus:{Estoque}\n";
         }
-
-
+      
+        static public void MostraProduto(Produto item, int cont)
+        {
+            Console.WriteLine($"Produto Numero:{cont}");
+            Console.WriteLine(item);
+        }
     }
 }
